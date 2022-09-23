@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public  class HttpBizRulesException extends RuntimeException {
-    private String code="500";
+public  class HttpFormRulesException extends RuntimeException {
+    private Integer code=500;
     private String message;
 
-    public HttpBizRulesException(String message) {
+    public HttpFormRulesException(String message) {
         this.message = message;
     }
 }

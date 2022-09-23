@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 项目类型查询参数
@@ -25,4 +26,6 @@ public class ChildForm implements Serializable {
      * 父id 0:顶级条目
      */
     private Integer projectStatus;
+    private Date createDate;
+    private ThreeForm threeForm;
 }

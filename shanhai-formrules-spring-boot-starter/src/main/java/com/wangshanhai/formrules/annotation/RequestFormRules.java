@@ -4,21 +4,22 @@ import java.lang.annotation.*;
 
 /**
  * 校验规则
+ * @author Shmily
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface RequestFormRules {
     /**
-     * 校验对象
+     * 校验对象(方法参数的参数名，多个使用,分隔)
      * @return
      */
    String [] target();
     /**
-     * 规则清单(多个使用;分割)
+     * 规则作用域(多个使用,分割)
      * @return
      */
-    String rule() default "" ;
+    String  [] ruleScope() default "" ;
     /**
      * 是否启用
      * @return

@@ -14,17 +14,15 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RulesForm  implements Serializable {
+public class ThreeForm implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
      *分类id
      */
-    private String projectType;
+    private String projectNameThree;
 
     /**
      * 父id 0:顶级条目
      */
-    private int projectPid;
-
-    private ChildForm childForm;
+    private Integer projectStatusThree;
 }

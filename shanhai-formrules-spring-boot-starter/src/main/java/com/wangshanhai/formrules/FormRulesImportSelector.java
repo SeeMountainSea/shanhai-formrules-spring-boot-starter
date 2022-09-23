@@ -10,10 +10,10 @@ public class FormRulesImportSelector implements ImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
         return new String[]{
-                "com.wangshanhai.formrules.component.RulesRegisterComponent",
                 "com.wangshanhai.formrules.component.FormRulesComponent",
                 "com.wangshanhai.formrules.component.RulesAnalyseComponent",
-                "com.wangshanhai.formrules.func.NotEmptyRules"
+                "com.wangshanhai.formrules.service.impl.RuleScanServiceFactory",
+                "com.wangshanhai.formrules.rules.NotEmptyRule",
         };
     }
 }

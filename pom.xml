@@ -19,7 +19,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <lombok.version>1.16.14</lombok.version>
-        <aviatorscript.version>5.3.0</aviatorscript.version>
+
     </properties>
     <packaging>pom</packaging>
     <name>shanhai-formrules-parent</name>
@@ -71,11 +71,7 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.googlecode.aviator</groupId>
-            <artifactId>aviator</artifactId>
-            <version>${aviatorscript.version}</version>
-        </dependency>
+
     </dependencies>
     <profiles>
         <!-- Deployment profile (required so these plugins are only used when deploying) -->
