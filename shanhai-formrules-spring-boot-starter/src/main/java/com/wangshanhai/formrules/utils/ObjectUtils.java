@@ -23,8 +23,8 @@ public class ObjectUtils {
                 continue;
             }
             String fieldType = fields[i].getType().getName();
-            if (fieldType.contains(".") && !fieldType.contains("java.lang")) {
-                fieldsList.addAll(getChildFiledName(getFieldValueByName(o, fields[i].getName()), fields[i].getName()));
+            if (fieldType.contains(".") && !fieldType.contains("java.")) {
+                fieldsList.addAll(getChildFiledName(fields[i].getType(), fields[i].getName()));
             } else {
                 fieldsList.add(fields[i].getName());
             }
@@ -39,11 +39,11 @@ public class ObjectUtils {
      * @param classFlag 对象上游字段标识
      * @return
      */
-    public static List<String> getChildFiledName(Object o, String classFlag) {
+    public static List<String> getChildFiledName(Class o, String classFlag) {
         if(o==null){
             return new ArrayList<>();
         }
-        Field[] fields = o.getClass().getDeclaredFields();
+        Field[] fields = o.getDeclaredFields();
         List<String> fieldsList = new ArrayList<>();
         for (int i = 0; i < fields.length; i++) {
             if (Modifier.isStatic(fields[i].getModifiers())) {
@@ -51,9 +51,8 @@ public class ObjectUtils {
             }
             String fieldType = fields[i].getType().getName();
             if (fieldType.contains(".") && !fieldType.contains("java.")) {
-                Object next=getFieldValueByName(o, fields[i].getName());
                 String nextFlag=classFlag+"."+fields[i].getName();
-                fieldsList.addAll(getChildFiledName(next,nextFlag ));
+                fieldsList.addAll(getChildFiledName(fields[i].getType(),nextFlag ));
             } else {
                 fieldsList.add(classFlag + "." + fields[i].getName());
             }

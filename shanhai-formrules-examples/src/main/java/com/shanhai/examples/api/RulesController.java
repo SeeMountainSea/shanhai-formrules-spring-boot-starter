@@ -1,57 +1,33 @@
 package com.shanhai.examples.api;
 
-import com.shanhai.examples.form.ChildForm;
 import com.shanhai.examples.form.RulesForm;
-import com.shanhai.examples.form.ThreeForm;
-import com.wangshanhai.formrules.annotation.RequestFormRules;
-import com.wangshanhai.formrules.utils.ObjectUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Date;
-import java.util.Map;
+import com.wangshanhai.formrules.annotation.FormRule;
+import com.wangshanhai.formrules.annotation.Rule;
+import com.wangshanhai.formrules.annotation.ShanHaiForm;
+import com.wangshanhai.formrules.utils.RuleCollect;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
 public class RulesController {
-
+    /**
+     * 规则测试
+     * @param rulesForm
+     * @return
+     */
     @RequestMapping("/restRules")
-    @RequestFormRules(target = {"rulesForm"}, ruleScope = {"r_zhangsan"})
+    @ShanHaiForm({
+            @FormRule(target = "rulesForm",rules = {
+                    @Rule(ruleType = RuleCollect.NOT_EMPTY,scanFields = "*",errorCode = 1001,message = "参数不能为空！"),
+//                    @Rule(ruleType = RuleCollect.REG_EXP,scanFields = "projectType", regExp = RegExpCollect.NUMBER,errorCode = 1002,message = "不符合格式要求！"),
+                    @Rule(ruleType = RuleCollect.ENUM,scanFields = "projectType", enums = {"张三","李四"},errorCode = 1002,message = "不符合格式要求！"),
+                    @Rule(ruleType = RuleCollect.STR_LENTH,scanFields = "projectType", min = 1,max = 30,errorCode = 1002,message = "不符合长度要求！")
+            })
+    })
     public String restRules(@RequestBody RulesForm rulesForm) {
         return "success";
     }
 
-    @RequestMapping("/formRules")
-    @RequestFormRules(target = {"rulesForm"})
-    public String formRules(@RequestParam MultipartFile file, @RequestParam Integer projectType, @RequestParam String projectPid) {
-        return "success";
-    }
-
-    @RequestMapping("/formMap")
-    @RequestFormRules(target = {"rulesForm"})
-    public String formRules(@RequestParam Map requestParam) {
-        return "success";
-    }
-
-    @RequestMapping("/pathRules/{id}/{type}")
-    @RequestFormRules(target = {"rulesForm"})
-    public String pathRules(@PathVariable("id") Integer id, @PathVariable("type") String type) {
-        return "success";
-    }
-
-    public static void main(String[] args) {
-        RulesForm rulesForm = new RulesForm();
-        rulesForm.setProjectPid(1);
-        rulesForm.setProjectType("一级项目");
-        ChildForm childForm = new ChildForm();
-        childForm.setProjectName("二级项目");
-        childForm.setProjectStatus(1);
-        childForm.setCreateDate(new Date());
-        ThreeForm threeForm = new ThreeForm();
-//        threeForm.setProjectNameThree("三级项目");
-        threeForm.setProjectStatusThree(1);
-        childForm.setThreeForm(threeForm);
-        rulesForm.setChildForm(childForm);
-        System.out.println(ObjectUtils.getFieldValueByName(rulesForm, "childForm.threeForm.projectNameThree"));
-    }
 }

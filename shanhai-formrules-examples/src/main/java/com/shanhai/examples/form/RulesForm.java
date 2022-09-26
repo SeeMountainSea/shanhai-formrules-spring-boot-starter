@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 项目类型查询参数
@@ -25,6 +26,6 @@ public class RulesForm  implements Serializable {
      * 父id 0:顶级条目
      */
     private int projectPid;
-
+    private Date ruleDate;
     private ChildForm childForm;
 }

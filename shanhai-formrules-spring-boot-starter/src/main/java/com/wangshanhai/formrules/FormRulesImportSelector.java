@@ -14,6 +14,9 @@ public class FormRulesImportSelector implements ImportSelector {
                 "com.wangshanhai.formrules.component.RulesAnalyseComponent",
                 "com.wangshanhai.formrules.service.impl.RuleScanServiceFactory",
                 "com.wangshanhai.formrules.rules.NotEmptyRule",
+                "com.wangshanhai.formrules.rules.EnumsRule",
+                "com.wangshanhai.formrules.rules.StrLengthRule",
+                "com.wangshanhai.formrules.rules.RegExpRule"
         };
     }
 }
