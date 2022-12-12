@@ -2,7 +2,7 @@ package com.wangshanhai.formrules.rules;
 
 import com.wangshanhai.formrules.annotation.Rule;
 import com.wangshanhai.formrules.service.RuleScanService;
-import com.wangshanhai.formrules.utils.HttpFormRulesException;
+import com.wangshanhai.formrules.exception.HttpFormRulesException;
 import com.wangshanhai.formrules.utils.Logger;
 import com.wangshanhai.formrules.utils.ObjectUtils;
 import com.wangshanhai.formrules.utils.RuleCollect;

@@ -1,4 +1,4 @@
-package com.wangshanhai.formrules.utils;
+package com.wangshanhai.formrules.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 public  class HttpFormRulesException extends RuntimeException {
     private Integer code=500;
     private String message;
-
     public HttpFormRulesException(String message) {
         this.message = message;
     }

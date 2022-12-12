@@ -1,6 +1,7 @@
 package com.shanhai.examples.config;
 
-import com.wangshanhai.formrules.utils.HttpFormRulesException;
+import com.wangshanhai.formrules.exception.HttpFormRulesException;
+import com.wangshanhai.formrules.exception.HttpReqLockException;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,9 @@ public class ErrorHandlerConfig {
         Map<String,Object> resp=new HashMap<>();
         if(e instanceof HttpFormRulesException){
             resp.put("code",((HttpFormRulesException) e).getCode());
+            resp.put("message",e.getMessage());
+        } else if(e instanceof HttpReqLockException){
+            resp.put("code",((HttpReqLockException) e).getCode());
             resp.put("message",e.getMessage());
         } else{
             resp.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());

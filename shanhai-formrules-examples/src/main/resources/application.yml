@@ -1,0 +1,3 @@
+shanhai:
+  reqlock:
+    strategy: redisson
