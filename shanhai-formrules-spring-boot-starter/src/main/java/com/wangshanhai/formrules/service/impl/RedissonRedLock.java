@@ -38,7 +38,7 @@ public class RedissonRedLock implements ShanhaiReqLock {
         try{
             lockInfoDTO.setStatus( redLock.tryLock(reqLock.lockTimeOut(), reqLock.lockExpireTime(), TimeUnit.SECONDS));
             lockInfoDTO.setLockObj(redLock);
-            Logger.info("[redissonClient-lock]-lockReal:{},status:{}",lockInfoDTO.getLockRealKey(),lockInfoDTO.getStatus());
+            Logger.info("[ShanhaiReqLock-redissonClient-lock]-lockReal:[{}],status:{}",lockInfoDTO.getLockRealKey(),lockInfoDTO.getStatus());
         }catch (Exception e){
             lockInfoDTO.setStatus(false);
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class RedissonRedLock implements ShanhaiReqLock {
     public void unlock(LockInfoDTO lockInfoDTO, ReqLock reqLock, Map<String, Object> extParams) {
         RLock redLock =(RLock)lockInfoDTO.getLockObj();
         if(redLock!=null){
-            Logger.info("[redissonClient-unlock]-{}",lockInfoDTO.getLockRealKey());
+            Logger.info("[ShanhaiReqLock-redissonClient-unlock]-{}",lockInfoDTO.getLockRealKey());
             redLock.unlock();
         }
     }

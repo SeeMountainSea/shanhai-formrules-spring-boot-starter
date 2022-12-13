@@ -25,7 +25,12 @@ public @interface ReqLock {
      * 分布式锁作用域（单一对象或某个对象的某个字段）
      * @return
      */
-    String lockTarget();
+    String lockTarget() default "";
+    /**
+     * 分布式锁作用域-多个作用域（每个为单一对象或某个对象的某个字段）
+     * @return
+     */
+    String [] multiLockTarget() default {};
     /**
      * 锁过期时间(单位:秒)
      * @return

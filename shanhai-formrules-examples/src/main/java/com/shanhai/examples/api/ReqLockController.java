@@ -1,10 +1,8 @@
 package com.shanhai.examples.api;
 
+import com.shanhai.examples.form.ChildForm;
 import com.wangshanhai.formrules.annotation.ReqLock;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * The {@code ReqLockController} class
@@ -21,4 +19,12 @@ public class ReqLockController {
       Thread.sleep(8000);
       return "success:"+id;
     }
+
+    @PostMapping("/lockMulti/{id}")
+    @ReqLock(multiLockTarget ={"id","childForm.projectName"},lockName = "demoMultiLock",lockValueStrategy ="",lockExpireTime = 100,lockTimeOut = 3)
+    public String lockMulti(@PathVariable("id") Integer id,@RequestBody ChildForm childForm) throws InterruptedException {
+        Thread.sleep(8000);
+        return "success:"+id;
+    }
+
 }
