@@ -2,6 +2,7 @@ package com.shanhai.examples.config;
 
 import com.wangshanhai.formrules.exception.HttpFormRulesException;
 import com.wangshanhai.formrules.exception.HttpReqLockException;
+import com.wangshanhai.formrules.exception.HttpSqlLockException;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,9 @@ public class ErrorHandlerConfig {
             resp.put("message",e.getMessage());
         } else if(e instanceof HttpReqLockException){
             resp.put("code",((HttpReqLockException) e).getCode());
+            resp.put("message",e.getMessage());
+        }else if(e instanceof HttpSqlLockException){
+            resp.put("code",((HttpSqlLockException) e).getCode());
             resp.put("message",e.getMessage());
         } else{
             resp.put("code", HttpStatus.INTERNAL_SERVER_ERROR.value());

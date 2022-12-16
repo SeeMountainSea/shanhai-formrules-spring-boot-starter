@@ -16,10 +16,7 @@ public class FormRulesImportSelector implements ImportSelector {
                 "com.wangshanhai.formrules.rules.NotEmptyRule",
                 "com.wangshanhai.formrules.rules.EnumsRule",
                 "com.wangshanhai.formrules.rules.StrLengthRule",
-                "com.wangshanhai.formrules.rules.RegExpRule",
-                "com.wangshanhai.formrules.component.ReqLockComponent",
-                "com.wangshanhai.formrules.config.ReqLockConfig",
-                "com.wangshanhai.formrules.service.impl.RedissonRedLock"
+                "com.wangshanhai.formrules.rules.RegExpRule"
         };
     }
 }
