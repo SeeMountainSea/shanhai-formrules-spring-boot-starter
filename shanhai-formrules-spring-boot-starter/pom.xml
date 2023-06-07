@@ -9,6 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>shanhai-formrules-spring-boot-starter</artifactId>
+    <name>shanhai-formrules-spring-boot-starter</name>
+    <description>山海FormRules - 一款基于规则的参数校验组件</description>
     <version>1.0.5</version>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

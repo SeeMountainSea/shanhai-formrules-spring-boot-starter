@@ -11,6 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wangshanhai.formrules</groupId>
     <artifactId>shanhai-formrules-parent</artifactId>
+    <description>山海FormRules - 一款基于规则的参数校验组件</description>
     <version>1.0.5</version>
     <modules>
         <module>shanhai-formrules-spring-boot-starter</module>
