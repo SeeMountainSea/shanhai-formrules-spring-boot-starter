@@ -16,7 +16,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <redisson.version>3.18.1</redisson.version>
-        <hutool.version>5.8.19</hutool.version>
+        <hutool.version>5.8.21</hutool.version>
     </properties>
     <dependencies>
         <dependency>
